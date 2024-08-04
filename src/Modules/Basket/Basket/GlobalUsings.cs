@@ -5,7 +5,7 @@ global using System.Reflection;
 global using Basket.Data;
 global using Basket.Basket.Dtos;
 global using FluentValidation;
-global using Shared.CQRS;
+global using Shared.Contracts.CQRS;
 global using Basket.Basket.Exceptions;
 global using Mapster;
 global using Carter;
