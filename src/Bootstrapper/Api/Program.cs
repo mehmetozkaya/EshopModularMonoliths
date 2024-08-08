@@ -24,6 +24,9 @@ builder.Services.AddStackExchangeRedisCache(options =>
 builder.Services
     .AddMassTransitWithAssemblies(builder.Configuration, catalogAssembly, basketAssembly);
 
+builder.Services.AddKeycloakWebApiAuthentication(builder.Configuration);
+builder.Services.AddAuthorization();
+
 //module services: catalog, basket, ordering
 builder.Services
     .AddCatalogModule(builder.Configuration)
@@ -40,6 +43,8 @@ var app = builder.Build();
 app.MapCarter();
 app.UseSerilogRequestLogging();
 app.UseExceptionHandler(options => { });
+app.UseAuthentication();
+app.UseAuthorization();
 
 app
     .UseCatalogModule()
