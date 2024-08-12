@@ -48,8 +48,48 @@ services:
       - KC_DB_URL=jdbc:postgresql://eshopdb/EShopDb?currentSchema=identity
       - KC_DB_USERNAME=postgres
       - KC_DB_PASSWORD=postgres
+      - KC_HOSTNAME=http://identity:9090/
+      - KC_HTTP_PORT=9090
     restart: always
     ports:
-      - "9090:8080"
+      - "9090:9090"
     command:
       - start-dev
+
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=eshopdb;Port=5432;Database=BasketDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - ConnectionStrings__Redis=distributedcache:6379
+      - MessageBroker__Host=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
+      - Keycloak__AuthServerUrl=http://identity:9090/
+      - Serilog__Using__0=Serilog.Sinks.Console
+      - Serilog__Using__1=Serilog.Sinks.Seq
+      - Serilog__MinimumLevel__Default=Information
+      - Serilog__MinimumLevel__Override__Microsoft=Information
+      - Serilog__MinimumLevel__Override__System=Warning
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=Seq
+      - Serilog__WriteTo__1__Args__serverUrl=http://seq:5341
+      - Serilog__Enrich__0=FromLogContext
+      - Serilog__Enrich__1=WithMachineName
+      - Serilog__Enrich__2=WithProcessId
+      - Serilog__Enrich__3=WithThreadId
+      - Serilog__Properties__Application=EShop ASP.NET Core App
+      - Serilog__Properties__Environment=Development
+    depends_on:
+      - eshopdb
+      - distributedcache
+      - seq
+      - messagebus
+      - identity
+    ports:
+      - "6000:8080"
+      - "6060:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
