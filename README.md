@@ -1,3 +1,31 @@
+**UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this Repository -> https://www.udemy.com/course/net-backend-bootcamp-modulith-vsa-ddd-cqrs-and-outbox/?couponCode=AUGU24**
+
+See the overall picture of **modular monoliths on .net** on real-world **e-shop modules** project;
+
+![microservices](https://github.com/aspnetrun/run-aspnetcore-microservices/assets/1147445/efe5e688-67f2-4ddd-af37-d9d3658aede4)
+
+There is a couple of modules which implemented **e-shop** modules over **Catalog, Basket, Identity** and **Ordering** modules with **Cloud-native Backing services (Redis, RabbitMQ, Keycloak)** and **Relational PostgreSQL databases isolated db schemas** with communicating over **RabbitMQ Event Driven Communication** and following **VSA, DDD, CQRS and Outbox Patterns**.
+
+### Check Explanation of this Repository on Medium
+* [.NET Backend Bootcamp: Modular Monoliths, VSA, DDD, CQRS and Outbox](https://mehmetozkaya.medium.com/net-backend-bootcamp-modular-monoliths-vsa-ddd-cqrs-and-outbox-b6332b272209)
+
+
+## Whats Including In This Repository
+We have implemented below **features over the run-aspnetcore-microservices repository**.
+
+#### Catalog microservice which includes; 
+* ASP.NET Core Minimal APIs and latest features of .NET8 and C# 12
+* **Vertical Slice Architecture** implementation with Feature folders and single .cs file includes different classes in one file
+* CQRS implementation using MediatR library
+* CQRS Validation Pipeline Behaviors with MediatR and FluentValidation
+* Use Marten library for .NET Transactional Document DB on PostgreSQL
+* Use Carter for Minimal API endpoint definition
+* Cross-cutting concerns Logging, Global Exception Handling and Health Checks
+
+
+
+
+
 # EshopModularMonoliths
 Modular Monolithic Architecture with .NET
 
