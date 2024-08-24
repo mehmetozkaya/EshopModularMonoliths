@@ -18,13 +18,6 @@ We have implemented below **architectural patterns in this repository**.
 * Command Query Responsibility Segregation (CQRS)
 * Outbox Pattern for Reliable Messaging
 
-The data for these modules will be stored in PostgreSQL relational databases and Redis distributed cache. While we use a single PostgreSQL database, each module will have its own schema to ensure data isolation between modules.
-
-* CQRS (Command Query Responsibility Segregation) and Vertical Slice architectures for each module development.
-* Modules communicate over In-process method calls-public APIs and use RabbitMQ for event-driven async communication.
-* Secure our APIs with Keycloak, using OpenID Connect and Bearer Tokens.
-* Implement the Outbox Pattern for reliable messaging between modules.
-
 #### Catalog module which includes; 
 * ASP.NET Core Minimal APIs and latest features of .NET8 and C# 12
 * **Vertical Slice Architecture** implementation with Feature folders and single .cs file includes different classes in one file
@@ -56,3 +49,29 @@ The data for these modules will be stored in PostgreSQL relational databases and
 #### Migrate to Microservices; 
 * EShop Modules to Microservices w/ Stranger Fig Pattern
 
+
+## Run The Project
+You will need the following tools:
+
+* [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+* [.Net Core 8 or later](https://dotnet.microsoft.com/download/dotnet-core/8)
+* [Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+### Installing
+Follow these steps to get your development environment set up: (Before Run Start the Docker Desktop)
+1. Clone the repository
+2. Once Docker for Windows is installed, go to the **Settings > Advanced option**, from the Docker icon in the system tray, to configure the minimum amount of memory and CPU like so:
+* **Memory: 4 GB**
+* CPU: 2
+3. At the root directory of solution, select **docker-compose** and **Set a startup project**. **Run docker-compose without debugging on visual studio**.
+  Or you can go to root directory which include **docker-compose.yml** files, run below command:
+```csharp
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+```
+
+4. Wait for docker compose all services. That’s it! (some microservices need extra time to work so please wait if not worked in first shut)
+
+5. Launch **Shopping Web Api -> https://localhost:6060** in postman and send api request to internal modules. You can import postman collection in your local environment.
+
+## Authors
+* **Mehmet Ozkaya** - *Initial work* - [mehmetozkaya](https://github.com/mehmetozkaya)
