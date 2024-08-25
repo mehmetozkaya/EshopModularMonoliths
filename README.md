@@ -1,6 +1,6 @@
 **UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this Repository -> https://www.udemy.com/course/net-backend-bootcamp-modulith-vsa-ddd-cqrs-and-outbox/?couponCode=AUGU24**
 
-See the overall picture of **modular monoliths on .net** on real-world **EShop** project;
+See the overall picture of **Modular Monoliths (Modulith) on .NET** on real-world **EShop** project;
 
 ![0modulith](https://github.com/user-attachments/assets/0f1f340e-6cb1-4bfd-aa05-f54109e5b865)
 
