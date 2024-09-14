@@ -1,5 +1,5 @@
 ﻿namespace Shared.Data.Seed;
-public interface IDataSeeder
+public interface IDataSeeder<TContext> where TContext : DbContext
 {
-    Task SeedAllAsync();
+    Task SeedAllAsync(TContext context);
 }
