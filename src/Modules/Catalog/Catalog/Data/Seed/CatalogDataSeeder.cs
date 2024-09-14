@@ -1,8 +1,8 @@
 ﻿namespace Catalog.Data.Seed;
-public class CatalogDataSeeder(CatalogDbContext dbContext)
-    : IDataSeeder
+public class CatalogDataSeeder
+    : IDataSeeder<CatalogDbContext>
 {
-    public async Task SeedAllAsync()
+    public async Task SeedAllAsync(CatalogDbContext dbContext)
     {
         if (!await dbContext.Products.AnyAsync())
         {
